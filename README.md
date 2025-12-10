@@ -6,10 +6,10 @@ This is a solution to the [Weather app challenge on Frontend Mentor](https://www
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
+  - [Tech Stack](#tech-stack)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
@@ -37,6 +37,11 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
+### Tech Stack
+
+- React
+- Tailwind
+
 ### Screenshot
 
 ![](./screenshot.jpg)
@@ -56,19 +61,70 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
-### Built with
+### Initial setup for proj
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+I started by breaking up proj into components, to see which ones I need to create in React. Here is a little pseudo-code structure I put up before getting stuck into individual pieces:
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+```html
+  <nav>
+    <logo>
+    <unit selector - multiple navtive html select elems sown together? need to POCit>
+  </nav>
 
+  <title>
+  <search panel>
+    <location search> 
+      <input>
+      <search results>
+        <location pill>
+        <location pill>
+        <location pill>
+        <location pill>
+        <location pill>
+      </search results>
+    </location search>
+    <button>
+  </search panel>
+
+  <display window>
+    <left side>
+      <main info summary>
+      <info stat squares>
+        <info stat square>
+        <info stat square>
+        <info stat square>
+        <info stat square>
+      </info stat squares>
+      <daily forecast>
+        <day>
+        <day>
+        <day>
+        <day>
+        <day>
+        <day>
+        <day>
+      </daily forecast>
+    </left side>
+    <right side>
+      <hourly forecast sidebar>
+        <day selector>
+        <hr temp col>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+          <hr temp pill>
+        </hr temp col>
+      </hourly forecast sidebar>
+    </right side>
+  </display window>
+```
+
+I've started going from the top down, tackling the search input -  locations display segment first.
+ 
 ### What I learned
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
