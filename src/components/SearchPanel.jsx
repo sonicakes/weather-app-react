@@ -1,14 +1,24 @@
 import LocationPill from "./LocationPill";
 
-const SearchPanel = ({ searchResults }) => {
+const SearchPanel = ({ searchResults, locationsLoading }) => {
+  const searchTxt = { name: "Search in progress" };
+
   return (
-    <div className="bg-neutral-800 w-full absolute top-[54px] p-3 rounded-lg">
-      {searchResults.length > 0 ? (
-        searchResults.map((res) => <LocationPill key={res.id} res={res} />)
-      ) : (
-        <p>Nothing matching your search</p>
+    <>
+      {locationsLoading && (
+        <div className="bg-neutral-800 w-full absolute top-[54px] p-3 rounded-lg">
+          <LocationPill res={searchTxt} isLoading={true} />
+        </div>
       )}
-    </div>
+
+      {!locationsLoading && searchResults.length > 0 && (
+        <div className="bg-neutral-800 w-full absolute top-[54px] p-3 rounded-lg">
+          {searchResults.map((res) => (
+            <LocationPill key={res.id} res={res} />
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

@@ -3,22 +3,23 @@ import Button from "./components/ui/Button";
 import MainHeading from "./components/typography/MainHeading";
 import SearchPanel from "./components/SearchPanel";
 import { useState, useEffect } from "react";
-import logo from './assets/images/logo.svg';
+import logo from "./assets/images/logo.svg";
 
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 
 const App = () => {
   const [location, setLocation] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [locationsLoading, setLocationsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
+  const [showEmptyMsg, setShowEmptyMsg] = useState(false);
 
   useEffect(() => {
     if (location === "") {
-      setLoading(false);
+      setLocationsLoading(false);
       return;
     }
-    setLoading(true);
+    setLocationsLoading(true);
     const delayDebounceFn = setTimeout(() => {
       const fetchSearchResults = async () => {
         const encodedLocation = encodeURIComponent(location);
@@ -36,11 +37,14 @@ const App = () => {
 
           setSearchResults(resultsArray);
           setError(null);
+          setShowEmptyMsg(true);
         } catch (err) {
           setError(err.message);
           setSearchResults([]);
+          setShowEmptyMsg(false);
         } finally {
-          setLoading(false);
+          setLocationsLoading(false);
+          setShowEmptyMsg(true);
         }
       };
 
@@ -54,7 +58,7 @@ const App = () => {
     setLocation(e.target.value);
   };
   return (
-    <div className="mx-auto max-w-screen-lg px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-6 lg:px-8">
       <nav className="flex justify-between">
         <div>
           <img src={logo} alt="weather app logo" />
@@ -72,12 +76,21 @@ const App = () => {
               onInputChange={handleSearchUpdate}
             />
             <Button />
-            {!loading && !error && location != "" && (
-              <SearchPanel searchResults={searchResults} />
+            {!error && location != "" && (
+              <SearchPanel
+                searchResults={searchResults}
+                locationsLoading={locationsLoading}
+              />
             )}
           </div>
+          {!locationsLoading && showEmptyMsg && searchResults.length === 0 && (
+            <div className="flex justify-center items-center mt-3">
+              <h3 className="text-xl md:text-2xl font-semibold tracking-wide">
+                No search result found!
+              </h3>
+            </div>
+          )}
         </div>
-        {loading && <p>Loading...</p>}
         {error && <div className="error">error: {error}</div>}
       </main>
     </div>
