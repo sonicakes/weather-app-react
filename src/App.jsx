@@ -4,8 +4,10 @@ import MainHeading from "./components/typography/MainHeading";
 import SearchPanel from "./components/SearchPanel";
 import { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
+import LocationSummary from "./components/LocationSummary";
 
 const API_URL = import.meta.env.VITE_GEOCODE_API;
+const METEO_URL = import.meta.env.VITE_METEO_API;
 
 const App = () => {
   const [location, setLocation] = useState("");
@@ -13,6 +15,9 @@ const App = () => {
   const [error, setError] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [showEmptyMsg, setShowEmptyMsg] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedLocLoading, setSelectedLocLoading] = useState(false);
+  const [selectedLocInfo, setSelectedLocInfo] = useState(null);
 
   useEffect(() => {
     if (location === "") {
@@ -54,9 +59,57 @@ const App = () => {
     return () => clearTimeout(delayDebounceFn);
   }, [location]);
 
+  //selected location precised search
+  useEffect(() => {
+    if (selectedLocation === "") {
+      setSelectedLocLoading(false);
+      return;
+    }
+    setSelectedLocLoading(true);
+    const delayDebounceFn = setTimeout(() => {
+      const fetchLocationDetails = async () => {
+        try {
+          const res = await fetch(
+            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&current=temperature_2m`
+          );
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+          const data = await res.json();
+          console.log("meteo data", data);
+
+          setSelectedLocInfo(data);
+          // setSearchResults(resultsArray);
+          // setError(null);
+          // setShowEmptyMsg(true);
+        } catch (err) {
+          // setError(err.message);
+          // setSearchResults([]);
+          // setShowEmptyMsg(false);
+        } finally {
+          setSelectedLocLoading(false);
+          // setShowEmptyMsg(true);
+        }
+      };
+
+      fetchLocationDetails();
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [selectedLocation]);
+
   const handleSearchUpdate = (e) => {
     setLocation(e.target.value);
   };
+
+  const handleLocationSelection = (el) => {
+    console.log("handle loc", el);
+    setSelectedLocation(el);
+    setError(null);
+    setSearchResults([]);
+    setShowEmptyMsg(false);
+    setLocation("");
+  };
+
   return (
     <div className="mx-auto max-w-5xl px-6 lg:px-8">
       <nav className="flex justify-between">
@@ -80,6 +133,7 @@ const App = () => {
               <SearchPanel
                 searchResults={searchResults}
                 locationsLoading={locationsLoading}
+                onClickSelection={handleLocationSelection}
               />
             )}
           </div>
@@ -93,6 +147,17 @@ const App = () => {
         </div>
         {error && <div className="error">error: {error}</div>}
       </main>
+      <div>
+        {/* {selectedLocation && (
+          <LocationSummary loc={selectedLocation} />
+        ) } */}
+        
+          selected location info: <br></br>
+          {selectedLocInfo && (
+              <LocationSummary loc={selectedLocation} info={selectedLocInfo} />
+          )}
+        
+      </div>
     </div>
   );
 };
