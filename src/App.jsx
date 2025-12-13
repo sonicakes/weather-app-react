@@ -4,8 +4,7 @@ import MainHeading from "./components/typography/MainHeading";
 import SearchPanel from "./components/SearchPanel";
 import { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
-import LocationSummary from "./components/LocationSummary";
-
+import MainDisplayWindow from "./components/MainDisplayWindow";
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 const METEO_URL = import.meta.env.VITE_METEO_API;
 
@@ -61,7 +60,11 @@ const App = () => {
 
   //selected location precised search
   useEffect(() => {
-    if (selectedLocation === "") {
+    if (
+      !selectedLocation ||
+      typeof selectedLocation !== "object" ||
+      !selectedLocation.latitude
+    ) {
       setSelectedLocLoading(false);
       return;
     }
@@ -70,24 +73,18 @@ const App = () => {
       const fetchLocationDetails = async () => {
         try {
           const res = await fetch(
-            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&current=temperature_2m`
+            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers`
           );
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
           const data = await res.json();
-          console.log("meteo data", data);
+          console.log("meteo data SUCCESS", data);
 
           setSelectedLocInfo(data);
-          // setSearchResults(resultsArray);
-          // setError(null);
-          // setShowEmptyMsg(true);
         } catch (err) {
-          // setError(err.message);
-          // setSearchResults([]);
-          // setShowEmptyMsg(false);
+          console.error("meteo data ERROR", err);
         } finally {
           setSelectedLocLoading(false);
-          // setShowEmptyMsg(true);
         }
       };
 
@@ -102,7 +99,6 @@ const App = () => {
   };
 
   const handleLocationSelection = (el) => {
-    console.log("handle loc", el);
     setSelectedLocation(el);
     setError(null);
     setSearchResults([]);
@@ -148,15 +144,11 @@ const App = () => {
         {error && <div className="error">error: {error}</div>}
       </main>
       <div>
-        {/* {selectedLocation && (
-          <LocationSummary loc={selectedLocation} />
-        ) } */}
-        
-          selected location info: <br></br>
-          {selectedLocInfo && (
-              <LocationSummary loc={selectedLocation} info={selectedLocInfo} />
-          )}
-        
+        <MainDisplayWindow
+          selectedLocInfo={selectedLocInfo}
+          selectedLocLoading={selectedLocLoading}
+          selectedLocation={selectedLocation}
+        />
       </div>
     </div>
   );
