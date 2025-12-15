@@ -21,7 +21,7 @@ const LocationSummary = ({ loc, info }) => {
         </div>
         <div className="relative z-50 flex justify-between w-full">
           {/* main summary 2 cols banner*/}
-          <div className="flex justify-between w-full items-center gap-2">
+          <div className="flex justify-around w-full items-center gap-2">
             <div>
               <h2 className="text-3xl font-semibold pb-1">
                 {loc.name}, {loc.country}
@@ -58,8 +58,9 @@ const LocationSummary = ({ loc, info }) => {
                     </span>
                   </h4>
                   <p className="flex gap-1 text-neutral-300 pt-1 items-center justify-center text-xs">
-                    <span>taken at</span>
+                    <span>at</span>
                     <span>{formatTime(info.current.time, "hour")}</span>
+                    <span>local time</span>
                   </p>
                 </div>
               </div>
@@ -90,3 +91,12 @@ const LocationSummary = ({ loc, info }) => {
 };
 
 export default LocationSummary;
+
+
+//todo - display as well in main screen
+// Map: Use the Google Maps Embed API to show an interactive map of the selected city. (Easiest and requires no key).
+
+// Summary: Use the Wikipedia REST API to grab a short introductory summary. (Requires no key, just simple URL fetching).
+
+// Local Time: You are already doing this, but prominently displaying the current local time in the city is extremely useful for a weather app.
+//current ticking clock?

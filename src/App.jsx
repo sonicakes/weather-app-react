@@ -96,9 +96,6 @@ const App = () => {
 
   const handleSearchUpdate = (e) => {
     setLocation(e.target.value);
-    // if(selectedLocation ) {
-    //     setSearchResults([]);
-    // }
   };
 
   const handleLocationSelection = (el) => {
