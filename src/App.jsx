@@ -73,7 +73,7 @@ const App = () => {
       const fetchLocationDetails = async () => {
         try {
           const res = await fetch(
-            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers`
+            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&timezone=${selectedLocation.timezone}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers`
           );
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
@@ -96,6 +96,9 @@ const App = () => {
 
   const handleSearchUpdate = (e) => {
     setLocation(e.target.value);
+    // if(selectedLocation ) {
+    //     setSearchResults([]);
+    // }
   };
 
   const handleLocationSelection = (el) => {

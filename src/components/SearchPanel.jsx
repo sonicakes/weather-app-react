@@ -6,13 +6,13 @@ const SearchPanel = ({ searchResults, locationsLoading, onClickSelection }) => {
   return (
     <>
       {locationsLoading && (
-        <div className="bg-neutral-800 w-full absolute top-[54px] p-3 rounded-lg">
+        <div className="bg-neutral-800 w-full absolute top-[54px] z-100 p-3 rounded-lg">
           <LocationPill res={searchTxt} isLoading={true} />
         </div>
       )}
 
       {!locationsLoading && searchResults.length > 0 && (
-        <div className="bg-neutral-800 w-full absolute top-[54px] p-3 rounded-lg">
+        <div className="bg-neutral-800 z-100 w-full absolute top-[54px] p-3 rounded-lg">
           {searchResults.map((res) => (
             <LocationPill key={res.id} res={res} onClickSelection={onClickSelection} />
           ))}

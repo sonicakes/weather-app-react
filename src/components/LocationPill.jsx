@@ -15,10 +15,11 @@ const LocationPill = ({ res, isLoading = false, onClickSelection }) => {
         <div 
         onClick={() => onClickSelection(res)}
         className="flex items-center text-sm gap-3 cursor-pointer hover:bg-neutral-700 hover:border-neutral-600 border-neutral-700 border transition-all rounded-lg text-neutral-200 p-2 mb-2 last:mb-0">
-          <img
+         {res.country_code && (   <img
             className="w-7"
             src={`https://hatscripts.github.io/circle-flags/flags/${res.country_code.toLowerCase()}.svg`}
-          />
+          />)}
+       
           <div className="flex flex-col">
             <div className="flex">
               <p className="font-bold">{res.name && res.name}</p>

@@ -7,7 +7,6 @@ const MainDisplayWindow = ({selectedLocInfo, selectedLocLoading, selectedLocatio
           {selectedLocInfo && !selectedLocLoading && (
           <LocationSummary loc={selectedLocation} info={selectedLocInfo} />
         )}
-
         {selectedLocLoading && <LoadingBlock />}
         </div>
         </>
