@@ -68,17 +68,7 @@ const LocationSummary = ({ loc, info }) => {
             </div>
           </div>
 
-          {/* <p>
-            Apparent temp:
-            {info.current.apparent_temperature}
-            {info.current_units.apparent_temperature}
-          </p> */}
-
-          {/* <p>
-            Relative humidity:
-            {info.current.relative_humidity_2m}
-            {info.current_units.relative_humidity_2m}
-          </p>
+          {/*
           <p>Is it daytime there? {info.current.is_day === 1 ? "yes" : "no"}</p> */}
         </div>
         <img

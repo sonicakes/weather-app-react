@@ -5,6 +5,7 @@ import SearchPanel from "./components/SearchPanel";
 import { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
 import MainDisplayWindow from "./components/MainDisplayWindow";
+import InfoSquaresRow from "./components/InfoSquaresRow";
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 const METEO_URL = import.meta.env.VITE_METEO_API;
 
@@ -87,6 +88,7 @@ const App = () => {
           setSelectedLocLoading(false);
         }
       };
+      //todo - include fetch api to https://en.wikipedia.org/api/rest_v1/page/summary/paris
 
       fetchLocationDetails();
     }, 500);
@@ -149,6 +151,16 @@ const App = () => {
           selectedLocLoading={selectedLocLoading}
           selectedLocation={selectedLocation}
         />
+        <>
+          <div className="rounded-lg mt-10">
+              <InfoSquaresRow
+                selectedLocInfo={selectedLocInfo}
+                selectedLocLoading={selectedLocLoading}
+                selectedLocation={selectedLocation}
+              />
+           
+          </div>
+        </>
       </div>
     </div>
   );
