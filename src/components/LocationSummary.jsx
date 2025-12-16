@@ -9,25 +9,30 @@ const LocationSummary = ({ loc, info }) => {
       ? format(date, "EEEE, MMM d, yyyy")
       : format(date, "h:mm a");
   };
-  //TODO- display the flag icon as well, similar to the search res pills
   return (
     <>
-      <div className="bg-blue-700 relative p-6 rounded-lg w-full h-[250px] flex items-center">
+      <div className="bg-blue-700 relative p-4 lg:p-6 rounded-lg w-full h-[250px] flex items-center">
         {/* country code & timezone info */}
-        <div className="absolute top-1 right-5 pt-1 text-xs flex gap-1 text-neutral-200 z-80">
+        <div className="absolute top-2 right-5 pt-1 text-xs flex gap-1 text-neutral-200 z-80">
           <span>Timezone: {loc.timezone}</span>
           <span>&#8226;</span>
           <span>{loc.country_code}</span>
         </div>
+        <p className="absolute bottom-3 z-80 right-5 text-neutral-200 flex gap-1 pt-1 items-center text-xs">
+          <span>taken at</span>
+          <span>{formatTime(info.current.time, "hour")}</span>
+          <span>&#8226;</span>
+          <span>{info.timezone_abbreviation}</span>
+        </p>
         <div className="relative z-50 flex justify-between w-full">
           {/* main summary 2 cols banner*/}
-          <div className="flex justify-around w-full items-center gap-2">
-            <div>
-              <h2 className="text-3xl font-semibold pb-1">
+          <div className="flex flex-wrap justify-center md:justify-around w-full items-center gap-2">
+            <div className="w-full md:w-auto flex justify-center items-center flex-col md:block">
+              <h2 className="text-2xl lg:text-3xl font-semibold pb-1">
                 {loc.name}, {loc.country}
               </h2>
               <div className="flex text-sm gap-1 text-neutral-200 items-center">
-                <p className="">{loc.admin1 && loc.admin1}</p>
+                <p className="text-xs lg:text-sm">{loc.admin1 && loc.admin1}</p>
                 {loc.admin2 && (
                   <>
                     <span>&#8226;</span>
@@ -35,33 +40,28 @@ const LocationSummary = ({ loc, info }) => {
                   </>
                 )}
               </div>
-              <p className="text-body pt-2 text-gray-200 font-semibold">
+              <p className="text-sm lg:text-body pt-2 text-gray-200 font-semibold">
                 {formatTime(info.current.time, "week")}
               </p>
             </div>
-            <div>
-              <div className="flex justify-between items-center gap-3">
+            <div className="w-full md:w-auto flex justify-center items-center flex-col md:block">
+              <div className="flex md:justify-between items-center gap-2">
                 <p className="flex flex-col items-center">
-                  <span className="text-6xl">
+                  <span className="text-5xl lg:text-6xl">
                     {WMO_WEATHER_MAP[info.current.weather_code].icon}
                   </span>
-                  <span className="text-xs pt-1.5 text-neutral-300">
+                  <span className="text-xs pt-0.5 text-neutral-300">
                     {WMO_WEATHER_MAP[info.current.weather_code].description}
                   </span>
                 </p>
                 <div className="flex flex-col">
-                  <h4 className="relative text-6xl font-semibold italic">
+                  <h4 className=" text-5xl lg:text-6xl font-semibold italic self-end">
                     <span>{info.current.temperature_2m}</span>
                     <span>&#176;</span>
-                    <span className="bottom-0 right-0 non-italic absolute text-xl">
+                    <span className="text-xl">
                       {info.current_units.temperature_2m === "°C" ? "C" : ""}
                     </span>
                   </h4>
-                  <p className="flex gap-1 text-neutral-300 pt-1 items-center justify-center text-xs">
-                    <span>at</span>
-                    <span>{formatTime(info.current.time, "hour")}</span>
-                    <span>local time</span>
-                  </p>
                 </div>
               </div>
               {/* <p>{WMO_WEATHER_MAP[info.current.weather_code].style}</p> */}
@@ -82,11 +82,15 @@ const LocationSummary = ({ loc, info }) => {
 
 export default LocationSummary;
 
-
-//todo - display as well in main screen
+//1. display as well in main screen:
 // Map: Use the Google Maps Embed API to show an interactive map of the selected city. (Easiest and requires no key).
 
-// Summary: Use the Wikipedia REST API to grab a short introductory summary. (Requires no key, just simple URL fetching).
+// 2. Summary: Use the Wikipedia REST API to grab a short introductory summary. (Requires no key, just simple URL fetching).
 
-// Local Time: You are already doing this, but prominently displaying the current local time in the city is extremely useful for a weather app.
+// 3. Local Time: You are already doing this, but prominently displaying the current local time in the city is extremely useful for a weather app.
 //current ticking clock?
+
+//4. on the start page, underneath the search bar, display a gallery of global main cities to have a look at their weather
+//to practice react router, clicking on the item 'details' btn will go to the detail page with wiki summary
+
+//5. TODO- display the flag icon as well, similar to the search res pills

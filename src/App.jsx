@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
 import MainDisplayWindow from "./components/MainDisplayWindow";
 import InfoSquaresRow from "./components/InfoSquaresRow";
+import HourlyDisplay from "./components/HourlyDIsplay";
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 const METEO_URL = import.meta.env.VITE_METEO_API;
 
@@ -109,7 +110,7 @@ const App = () => {
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl lg:max-w-7xl px-6 lg:px-8">
       <nav className="flex justify-between">
         <div>
           <img src={logo} alt="weather app logo" />
@@ -117,9 +118,9 @@ const App = () => {
         <div>unit selector</div>
       </nav>
       <main>
-        <div className="flex justify-center flex-col items-center gap-3">
+        <div className="flex md:justify-center flex-col items-center gap-3">
           <MainHeading title="How's the sky looking today?" />
-          <div className="relative search-panel flex gap-3 items-center mt-6">
+          <div className="relative w-full flex-wrap justify-center flex gap-3 items-center mt-6">
             <TextInput
               name="location"
               value={location}
@@ -144,24 +145,40 @@ const App = () => {
           )}
         </div>
         {error && <div className="error">error: {error}</div>}
-      </main>
-      <div>
-        <MainDisplayWindow
-          selectedLocInfo={selectedLocInfo}
-          selectedLocLoading={selectedLocLoading}
-          selectedLocation={selectedLocation}
-        />
-        <>
-          <div className="rounded-lg mt-10">
+        
+        {/* main display window */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* left col */}
+          <div className="md:col-span-2">
+            <MainDisplayWindow
+              selectedLocInfo={selectedLocInfo}
+              selectedLocLoading={selectedLocLoading}
+              selectedLocation={selectedLocation}
+            />
+
+            <div className="rounded-lg">
               <InfoSquaresRow
                 selectedLocInfo={selectedLocInfo}
                 selectedLocLoading={selectedLocLoading}
                 selectedLocation={selectedLocation}
               />
-           
+               {selectedLocInfo && !selectedLocLoading && (
+                <h6>Daily forecast grid below</h6>
+               )}
+              
+            </div>
           </div>
-        </>
-      </div>
+
+          {/* right col */}
+          <div className="md:col-span-1">
+          
+             {selectedLocInfo && !selectedLocLoading && (
+                <HourlyDisplay />
+               )}
+          </div>
+        </div>
+          
+      </main>
     </div>
   );
 };

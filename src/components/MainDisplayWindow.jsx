@@ -3,7 +3,7 @@ import LoadingBlock from "./ui/LoadingBlock";
 const MainDisplayWindow = ({selectedLocInfo, selectedLocLoading, selectedLocation}) => {
     return ( 
         <>
-        <div className="rounded-lg mt-10">
+        <div className="rounded-lg">
           {selectedLocInfo && !selectedLocLoading && (
           <LocationSummary loc={selectedLocation} info={selectedLocInfo} />
         )}
