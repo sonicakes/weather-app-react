@@ -6,11 +6,21 @@ import { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
 import MainDisplayWindow from "./components/MainDisplayWindow";
 import InfoSquaresRow from "./components/InfoSquaresRow";
-import HourlyDisplay from "./components/HourlyDIsplay";
+import HourlyDisplay from "./components/HourlyDisplay";
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 const METEO_URL = import.meta.env.VITE_METEO_API;
+import { slidesData } from "./constants/staticGallery";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const App = () => {
+  
   const [location, setLocation] = useState("");
   const [locationsLoading, setLocationsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -75,10 +85,10 @@ const App = () => {
       const fetchLocationDetails = async () => {
         try {
           const res = await fetch(
-             `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
+            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
           );
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-         
+
           const data = await res.json();
           console.log("meteo data SUCCESS", data);
 
@@ -120,7 +130,12 @@ const App = () => {
       <main>
         <div className="flex md:justify-center flex-col items-center gap-3">
           <MainHeading title="How's the sky looking today?" />
-          <div className="relative w-full flex-wrap justify-center flex gap-3 items-center mt-6">
+             
+          <p className="md:w-100 text-center leading-6 text-neutral-200 py-4">
+            Search for a specific destination or select one of the major cities
+            from the gallery below.
+          </p> 
+          <div className="relative w-full flex-wrap justify-center flex gap-3 items-center">
             <TextInput
               name="location"
               value={location}
@@ -145,7 +160,74 @@ const App = () => {
           )}
         </div>
         {error && <div className="error">error: {error}</div>}
-        
+        {/* landing gallery of major global cities to choose from */}
+        {!selectedLocation && !locationsLoading && (
+          <div
+            style={{ width: "100%", maxWidth: "800px", margin: "20px auto" }}
+          >
+            <Swiper
+              modules={[Navigation, Pagination]}
+              navigation
+              pagination={{ clickable: true }}
+              className="mySwiper"
+              style={{ height: "450px" }}
+            >
+              {slidesData.map((slide) => (
+                <SwiperSlide key={slide.id} style={{ position: "relative" }}>
+                  {/* 1. Background Image */}
+                  <img
+                    src={slide.img}
+                    alt={slide.title}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    className="rounded-lg"
+                  />
+
+                  {/* 2. Content Overlay */}
+                  <div
+                    className="overlay"
+                    style={{
+                      position: "absolute",
+                      bottom: "40px",
+                      left: "40px",
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.6)",
+                      padding: "20px",
+                      borderRadius: "8px",
+                      maxWidth: "300px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span style={{ fontSize: "1.5rem" }}>{slide.flag}</span>
+                      <h2 className="font-bric text-3xl">{slide.title}</h2>
+                    </div>
+                    <p className="text-sm">{slide.description}</p>
+                    {slide.soundtrack && (
+                      <p className="text-sm">Soundtrack: {slide.soundtrack}</p>
+                    )}
+                    {slide.movie && (
+                      <p className="text-sm">Movie: {slide.movie}</p>
+                    )}
+
+                    <Button 
+                      label="Check local weather" 
+                      type="desc" 
+                      onClickHandle={() => setLocation(slide.title)}/>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
         {/* main display window */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* left col */}
@@ -162,22 +244,22 @@ const App = () => {
                 selectedLocLoading={selectedLocLoading}
                 selectedLocation={selectedLocation}
               />
-               {selectedLocInfo && !selectedLocLoading && (
+              {selectedLocInfo && !selectedLocLoading && (
                 <h6>Daily forecast grid below</h6>
-               )}
-              
+              )}
             </div>
           </div>
 
           {/* right col */}
           <div className="md:col-span-1">
-          
-             {selectedLocInfo && !selectedLocLoading && (
-                <HourlyDisplay hourly={selectedLocInfo.hourly} curTime={selectedLocInfo.current.time}/>
-               )}
+            {selectedLocInfo && !selectedLocLoading && (
+              <HourlyDisplay
+                hourly={selectedLocInfo.hourly}
+                curTime={selectedLocInfo.current.time}
+              />
+            )}
           </div>
         </div>
-          
       </main>
     </div>
   );

@@ -27,7 +27,7 @@ const LocationSummary = ({ loc, info }) => {
         <div className="relative z-50 flex justify-between w-full">
           {/* main summary 2 cols banner*/}
           <div className="flex flex-wrap lg:flex-nowrap justify-center md:justify-around w-full items-center gap-2">
-            <div className="w-full md:w-auto flex justify-center items-center flex-col lg:block">
+            <div className="w-full md:w-auto flex justify-center items-center md:items-start lg:items-center flex-col lg:block">
               <h2 className="text-2xl lg:text-3xl font-semibold pb-1">
                 {loc.name}, {loc.country}
               </h2>
@@ -82,6 +82,7 @@ const LocationSummary = ({ loc, info }) => {
 
 export default LocationSummary;
 
+//todos
 //1. display as well in main screen:
 // Map: Use the Google Maps Embed API to show an interactive map of the selected city. (Easiest and requires no key).
 
@@ -90,7 +91,7 @@ export default LocationSummary;
 // 3. Local Time: You are already doing this, but prominently displaying the current local time in the city is extremely useful for a weather app.
 //current ticking clock?
 
-//4. on the start page, underneath the search bar, display a gallery of global main cities to have a look at their weather
-//to practice react router, clicking on the item 'details' btn will go to the detail page with wiki summary
+//4. when selection is set, collapse the gallery - set its state to closed
+//5. to practice react router, clicking on the item 'details' btn will go to the detail page with wiki summary
 
-//5. TODO- display the flag icon as well, similar to the search res pills
+//6. TODO- display the flag icon as well, similar to the search res pills
