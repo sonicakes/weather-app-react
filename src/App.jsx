@@ -110,7 +110,7 @@ const App = () => {
   };
 
   return (
-    <div className="mx-auto max-w-5xl lg:max-w-7xl px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-6 lg:px-8">
       <nav className="flex justify-between">
         <div>
           <img src={logo} alt="weather app logo" />
@@ -147,7 +147,7 @@ const App = () => {
         {error && <div className="error">error: {error}</div>}
         
         {/* main display window */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* left col */}
           <div className="md:col-span-2">
             <MainDisplayWindow

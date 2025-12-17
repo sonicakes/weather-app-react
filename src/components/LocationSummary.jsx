@@ -26,8 +26,8 @@ const LocationSummary = ({ loc, info }) => {
         </p>
         <div className="relative z-50 flex justify-between w-full">
           {/* main summary 2 cols banner*/}
-          <div className="flex flex-wrap justify-center md:justify-around w-full items-center gap-2">
-            <div className="w-full md:w-auto flex justify-center items-center flex-col md:block">
+          <div className="flex flex-wrap lg:flex-nowrap justify-center md:justify-around w-full items-center gap-2">
+            <div className="w-full md:w-auto flex justify-center items-center flex-col lg:block">
               <h2 className="text-2xl lg:text-3xl font-semibold pb-1">
                 {loc.name}, {loc.country}
               </h2>
@@ -44,7 +44,7 @@ const LocationSummary = ({ loc, info }) => {
                 {formatTime(info.current.time, "week")}
               </p>
             </div>
-            <div className="w-full md:w-auto flex justify-center items-center flex-col md:block">
+            <div className="w-full md:w-auto flex justify-center items-center flex-col lg:block">
               <div className="flex md:justify-between items-center gap-2">
                 <p className="flex flex-col items-center">
                   <span className="text-5xl lg:text-6xl">
