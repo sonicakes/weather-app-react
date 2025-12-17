@@ -12,7 +12,7 @@ const METEO_URL = import.meta.env.VITE_METEO_API;
 import { slidesData } from "./constants/staticGallery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
+import DailyDisplay from "./components/DailyDisplay";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -85,7 +85,7 @@ const App = () => {
       const fetchLocationDetails = async () => {
         try {
           const res = await fetch(
-            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
+            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
           );
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
@@ -245,7 +245,10 @@ const App = () => {
                 selectedLocation={selectedLocation}
               />
               {selectedLocInfo && !selectedLocLoading && (
-                <h6>Daily forecast grid below</h6>
+                   <DailyDisplay
+                    dailyVals={selectedLocInfo.daily}
+                    dailyUnits={selectedLocInfo.dailyUnits}
+              />
               )}
             </div>
           </div>
