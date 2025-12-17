@@ -75,10 +75,10 @@ const App = () => {
       const fetchLocationDetails = async () => {
         try {
           const res = await fetch(
-            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&timezone=${selectedLocation.timezone}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers`
+             `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
           );
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-
+         
           const data = await res.json();
           console.log("meteo data SUCCESS", data);
 
@@ -173,7 +173,7 @@ const App = () => {
           <div className="md:col-span-1">
           
              {selectedLocInfo && !selectedLocLoading && (
-                <HourlyDisplay />
+                <HourlyDisplay hourly={selectedLocInfo.hourly} curTime={selectedLocInfo.current.time}/>
                )}
           </div>
         </div>

@@ -1,7 +1,8 @@
-import EmptyPill from "./EmptyPill";
+import HourlyPill from "./HourlyPill";
 
-const HourlyDisplay = ({}) => {
-  return (
+const HourlyDisplay = ({ hourly, curTime }) => {
+
+return (
     <div className="bg-neutral-800 py-3 px-4 rounded-lg border border-neutral-600">
       <div className="flex items-center justify-between pb-4 ">
         <h5 className="text-neutral-200 font-medium">Hourly forecast</h5>
@@ -10,11 +11,14 @@ const HourlyDisplay = ({}) => {
         </select>
       </div>
       <div className="flex flex-col gap-2">
-        {Array(8)
-          .fill(null)
-          .map((_, index) => (
-            <EmptyPill key={index} />
-          ))}
+        {hourly.time.map((hr, index) => (
+          <HourlyPill 
+            key={index} 
+            hour={hr} 
+            temp={hourly.temperature_2m[index]}
+            weather={hourly.weather_code[index]}
+          />
+        ))}
       </div>
     </div>
   );
