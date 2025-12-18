@@ -1,5 +1,6 @@
 import logo from "../../assets/images/logo.svg";
 import Button from "../common/ui/Button";
+import units from "../../assets/images/icon-units.svg";
 
 const TopNav = ({ switchUnits, unitSetting }) => {
   return (
@@ -9,7 +10,9 @@ const TopNav = ({ switchUnits, unitSetting }) => {
       </div>
       <Button 
         label={unitSetting === "metric" ? "Switch to Imperial" : "Switch to Metric" }
-        type="desc" 
+        type="desc"
+        icon={units}
+        iconStyles="invert" 
         onClickHandle={switchUnits}
       />
     </nav>

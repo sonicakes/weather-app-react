@@ -1,7 +1,7 @@
-const Button = ({ label = "Search", type = "general", onClickHandle }) => {
+const Button = ({ label = "Search", type = "general", icon = null, iconStyles = null, onClickHandle }) => {
   return (
     <button
-      className={`w-full md:w-auto transition-all rounded-lg px-3 font-semibold cursor-pointer
+      className={`w-full md:w-auto flex gap-1 items-center transition-all rounded-lg px-3 font-semibold cursor-pointer
     ${
       type === "desc"
         ? "bg-orange-500 hover:bg-orange-400 text-sm py-1 text-neutral-900"
@@ -10,7 +10,10 @@ const Button = ({ label = "Search", type = "general", onClickHandle }) => {
     `}
       onClick={onClickHandle}
     >
-      {label}
+      {icon && ( 
+        <img src={icon} className={iconStyles && iconStyles}/>
+      )}
+     {label}
     </button>
   );
 };

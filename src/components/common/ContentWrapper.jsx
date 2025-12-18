@@ -118,7 +118,6 @@ const ContentWrapper = () => {
         switchUnits={toggleUnitSetting}
         unitSetting={unitSetting}
       />
-     <p>unit setting: {unitSetting}</p>
       <MainDisplay 
         location={location}
         handleSearchUpdate={handleSearchUpdate}
