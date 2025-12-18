@@ -87,6 +87,7 @@ export default LocationSummary;
 // Map: Use the Google Maps Embed API to show an interactive map of the selected city. (Easiest and requires no key).
 
 // 2. Summary: Use the Wikipedia REST API to grab a short introductory summary. (Requires no key, just simple URL fetching).
+// fetch api to https://en.wikipedia.org/api/rest_v1/page/summary/paris
 
 // 3. Local Time: You are already doing this, but prominently displaying the current local time in the city is extremely useful for a weather app.
 //current ticking clock?
