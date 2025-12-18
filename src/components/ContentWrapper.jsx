@@ -13,6 +13,7 @@ const ContentWrapper = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedLocLoading, setSelectedLocLoading] = useState(false);
   const [selectedLocInfo, setSelectedLocInfo] = useState(null);
+  const [unitSetting, setUnitSetting] = useState("metric");
 
   useEffect(() => {
     if (location === "") {
@@ -54,7 +55,7 @@ const ContentWrapper = () => {
     return () => clearTimeout(delayDebounceFn);
   }, [location]);
 
-  //selected location precised search
+  //selected location precised search (selected location)
   useEffect(() => {
     if (
       !selectedLocation ||
@@ -67,10 +68,12 @@ const ContentWrapper = () => {
     setSelectedLocLoading(true);
     const delayDebounceFn = setTimeout(() => {
       const fetchLocationDetails = async () => {
+        let url=`${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`;
+        if (unitSetting === "imperial") {
+          url += "&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch";
+        }
         try {
-          const res = await fetch(
-            `${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`
-          );
+          const res = await fetch(url);
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
           const data = await res.json();
@@ -88,7 +91,7 @@ const ContentWrapper = () => {
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [selectedLocation]);
+  }, [selectedLocation, unitSetting]);
 
   const handleSearchUpdate = (e) => {
     setLocation(e.target.value);
@@ -101,9 +104,21 @@ const ContentWrapper = () => {
     setShowEmptyMsg(false);
     setLocation("");
   };
+
+  const toggleUnitSetting = () => {
+    if (unitSetting === "metric") {
+      setUnitSetting("imperial");
+    } else {
+      setUnitSetting("metric");
+    }
+  };
   return (
     <>
-      <TopNav />
+      <TopNav 
+        switchUnits={toggleUnitSetting}
+        unitSetting={unitSetting}
+      />
+     <p>unit setting: {unitSetting}</p>
       <MainDisplay 
         location={location}
         handleSearchUpdate={handleSearchUpdate}
