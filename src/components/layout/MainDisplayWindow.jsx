@@ -1,5 +1,5 @@
-import LocationSummary from "./LocationSummary";
-import LoadingBlock from "./ui/LoadingBlock";
+import LocationSummary from "../weather/main/LocationSummary";
+import LoadingBlock from "../common/ui/LoadingBlock";
 const MainDisplayWindow = ({selectedLocInfo, selectedLocLoading, selectedLocation}) => {
     return ( 
         <>

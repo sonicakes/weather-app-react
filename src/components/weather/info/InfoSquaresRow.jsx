@@ -1,4 +1,4 @@
-import InfoSquare from "../components/InfoSquare";
+import InfoSquare from "./InfoSquare";
 
 const InfoSquaresRow = ({
   selectedLocInfo,

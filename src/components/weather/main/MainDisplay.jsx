@@ -1,12 +1,12 @@
-import MainHeading from "../components/typography/MainHeading";
-import TextInput from "../components/ui/TextInput";
-import Button from "../components/ui/Button";
-import SearchPanel from "../components/SearchPanel";
-import MainDisplayWindow from "../components/MainDisplayWindow";
-import InfoSquaresRow from "../components/InfoSquaresRow";
-import HourlyDisplay from "../components/HourlyDisplay";
-import DailyDisplay from "../components/DailyDisplay";
-import HomeGallery from "../components/HomeGallery";
+import MainHeading from "../../common/typography/MainHeading";
+import TextInput from "../../common/ui/TextInput";
+import Button from "../../common/ui/Button";
+import SearchPanel from "../../location/SearchPanel";
+import MainDisplayWindow from "../../layout/MainDisplayWindow";
+import InfoSquaresRow from "../info/InfoSquaresRow";
+import HourlyDisplay from "../hourly/HourlyDisplay";
+import DailyDisplay from "../daily/DailyDisplay";
+import HomeGallery from "../../gallery/HomeGallery";
 
 const MainDisplay = ({
     location, 

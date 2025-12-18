@@ -1,4 +1,4 @@
-import { WMO_WEATHER_MAP } from "../constants/weatherCodes";
+import { WMO_WEATHER_MAP } from "../../../constants/weatherCodes";
 import { format } from "date-fns";
 
 const HourlyPill = ({ hour, temp, weather }) => {

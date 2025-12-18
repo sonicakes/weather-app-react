@@ -1,5 +1,5 @@
-import iconLoading from "../assets/images/icon-loading.svg";
-import CircleFlag from "./CircleFlag";
+import iconLoading from "../../assets/images/icon-loading.svg";
+import CircleFlag from "../common/CircleFlag";
 const LocationPill = ({ res, isLoading = false, onClickSelection }) => {
   return (
     <>

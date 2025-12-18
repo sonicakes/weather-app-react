@@ -1,13 +1,13 @@
-import { slidesData } from "../constants/staticGallery";
+import { slidesData } from "../../constants/staticGallery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Button from "./ui/Button";
-import CircleFlag from "./CircleFlag";
-import bgToday from "../assets/images/bg-today-large.svg";
+import Button from "../common/ui/Button";
+import CircleFlag from "../common/CircleFlag";
+import bgToday from "../../assets/images/bg-today-large.svg";
 const HomeGallery = ({ setLocation }) => {
   return (
     <div className="w-full lg:max-w-[800px] mx-auto my-5">

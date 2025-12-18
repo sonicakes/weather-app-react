@@ -1,4 +1,4 @@
-import iconSearch from "../../assets/images/icon-search.svg";
+import iconSearch from "../../../assets/images/icon-search.svg";
 const TextInput = ({ name, value, placeholder, onInputChange }) => {
   return (
     <div className="relative w-full md:w-100">

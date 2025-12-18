@@ -1,7 +1,7 @@
 const API_URL = import.meta.env.VITE_GEOCODE_API;
 const METEO_URL = import.meta.env.VITE_METEO_API;
-import MainDisplay from "../components/MainDisplay";
-import TopNav from "../components/TopNav";
+import MainDisplay from "../weather/main/MainDisplay";
+import TopNav from "../layout/TopNav";
 import { useState, useEffect } from "react";
 
 const ContentWrapper = () => {

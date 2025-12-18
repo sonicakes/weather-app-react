@@ -1,4 +1,4 @@
-import loading from '../../assets/images/loading-dots.svg'
+import loading from '../../../assets/images/loading-dots.svg'
 const LoadingBlock = () => {
   return (
     <>

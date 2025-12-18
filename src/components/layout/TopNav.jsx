@@ -1,5 +1,5 @@
-import logo from "../assets/images/logo.svg";
-import Button from "./ui/Button";
+import logo from "../../assets/images/logo.svg";
+import Button from "../common/ui/Button";
 
 const TopNav = ({ switchUnits, unitSetting }) => {
   return (

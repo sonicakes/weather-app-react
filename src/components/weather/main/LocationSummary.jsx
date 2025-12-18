@@ -1,6 +1,6 @@
-import { WMO_WEATHER_MAP } from "../constants/weatherCodes";
+import { WMO_WEATHER_MAP } from "../../../constants/weatherCodes";
 import { format } from "date-fns";
-import bgToday from "../assets/images/bg-today-large.svg";
+import bgToday from "../../../assets/images/bg-today-large.svg";
 
 const LocationSummary = ({ loc, info }) => {
   const formatTime = (cur, type) => {
