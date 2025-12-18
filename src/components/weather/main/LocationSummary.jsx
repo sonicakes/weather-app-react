@@ -28,15 +28,15 @@ const LocationSummary = ({ loc, info }) => {
           {/* main summary 2 cols banner*/}
           <div className="flex flex-wrap lg:flex-nowrap justify-center md:justify-around w-full items-center gap-2">
             <div className="w-full md:w-auto flex justify-center items-center md:items-start lg:items-center flex-col lg:block">
-              <h2 className="text-2xl lg:text-3xl font-semibold pb-1">
+              <h2 className="text-2xl lg:text-3xl font-semibold lg:pb-1">
                 {loc.name}, {loc.country}
               </h2>
-              <div className="flex text-sm gap-1 text-neutral-200 items-center">
+              <div className="flex gap-1 text-neutral-200 items-center">
                 <p className="text-xs lg:text-sm">{loc.admin1 && loc.admin1}</p>
                 {loc.admin2 && (
                   <>
                     <span>&#8226;</span>
-                    <p>{loc.admin2 && loc.admin2}</p>
+                    <p className="text-xs lg:text-sm">{loc.admin2 && loc.admin2}</p>
                   </>
                 )}
               </div>

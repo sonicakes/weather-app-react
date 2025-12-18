@@ -1,12 +1,12 @@
 export const slidesData = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1513326738677-b964603b136d",
-    title: "Moscow",
-    description: "The capital of modern Russia.",
-    flag: "RU",
-    soundtrack: "Rasputin - Boney M",
-    movie: "Gentleman in Moscow - 2024",
+    img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365",
+    title: "Bangkok",
+    description: "The vibrant, bustling gateway to Southeast Asia.",
+    flag: "TH",
+    soundtrack: "One Night in Bangkok",
+    movie: "The Hangover Part II - 2011",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const slidesData = [
       "Posesses the largest ancient amphitheatre ever built in Rome.",
     flag: "IT",
     soundtrack: "Mambo Italiano",
-    movie: "Godfather - Francis Ford Coppola - 1972",
+    movie: "Godfather - 1972",
   },
   {
     id: 3,
@@ -25,26 +25,27 @@ export const slidesData = [
     description: "A high-tech city where palaces meet skyscrapers.",
     flag: "KR",
     soundtrack: "Gangnam Style",
-    movie: "Parasite - 2019 - Bong Joon Ho",
+    movie: "Parasite - 2019",
+  },
+    {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1513326738677-b964603b136d",
+    title: "Moscow",
+    description: "The capital of modern Russia.",
+    flag: "RU",
+    soundtrack: "Rasputin - Boney M",
+    movie: "Gentleman in Moscow - 2024",
   },
   {
-    id: 4,
+    id: 5,
     img: "https://images.unsplash.com/photo-1549693578-d683be217e58",
     title: "Tokyo",
     description: "The neon-lit heart of Japan's megalopolis.",
     flag: "JP",
     soundtrack: "Big in Japan",
-    movie: "Lost in Translation - 2003 - Sofia Coppola",
+    movie: "Lost in Translation - 2003",
   },
-  {
-    id: 5,
-    img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365",
-    title: "Bangkok",
-    description: "The vibrant, bustling gateway to Southeast Asia.",
-    flag: "TH",
-    soundtrack: "One Night in Bangkok",
-    movie: "The Hangover Part II - 2011 - Todd Phillips",
-  },
+
   {
     id: 6,
     img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
@@ -78,7 +79,7 @@ export const slidesData = [
     description: "Famous for its carnival and the Christ the Redeemer statue.",
     flag: "BR",
     soundtrack: "The Girl from Ipanema",
-    movie: "Rio - 2011 - Disney",
+    movie: "Rio - 2011",
   },
   {
     id: 10,
@@ -103,10 +104,10 @@ export const slidesData = [
     img: "https://images.unsplash.com/photo-1577871598838-a543ee47cd79?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Hong Kong",
     description:
-      "The energetic pulse of Asia—a high-density metropolis famous for its skyline, street food, and deep-water port.",
+      "The energetic pulse of Asia — a high-density metropolis.",
     flag: "HK",
     soundtrack: "Hungry Like the Wolf by Duran Duran",
-    movie: "Jackie Chan",
+    movie: "City Hunter (1993)",
   },
   {
     id: 13,
@@ -142,7 +143,7 @@ export const slidesData = [
     description: "Famous for its intricate canal system and artistic heritage.",
     flag: "NL",
     soundtrack: "Amsterdam by Coldplay",
-    movie: "Diamonds are forever - Guy Hamilton - 1971",
+    movie: "Diamonds are forever - 1971",
   },
   {
     id: 17,
@@ -152,7 +153,7 @@ export const slidesData = [
       "The stunning harbor city featuring the Opera House and Bondi Beach.",
     flag: "AU",
     soundtrack: "Down Under by Men at Work",
-    movie: "Anyone but you - 2023",
+    movie: "Anyone But You - 2023",
   },
   {
     id: 18,
