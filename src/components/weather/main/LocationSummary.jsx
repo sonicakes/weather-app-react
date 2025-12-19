@@ -1,14 +1,9 @@
 import { WMO_WEATHER_MAP } from "../../../constants/weatherCodes";
-import { format } from "date-fns";
 import bgToday from "../../../assets/images/bg-today-large.svg";
+import { formatTime } from "../../../utilities/dateFormat";
 
 const LocationSummary = ({ loc, info }) => {
-  const formatTime = (cur, type) => {
-    const date = new Date(cur);
-    return type === "week"
-      ? format(date, "EEEE, MMM d, yyyy")
-      : format(date, "h:mm a");
-  };
+
   return (
     <>
       <div className="bg-blue-700 relative p-4 lg:p-6 rounded-lg w-full h-[250px] flex items-center">

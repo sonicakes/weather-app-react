@@ -19,13 +19,13 @@ const HomeGallery = ({ setLocation }) => {
         pagination={{ clickable: true }}
         loop={true}
         autoplay={{
-        delay: 4000,                // 3 seconds between slides
-        disableOnInteraction: false, // Continue autoplay after user swiped
-        pauseOnMouseEnter: true,     // Pause when mouse hovers over slider
+        delay: 4000,                
+        disableOnInteraction: false, 
+        pauseOnMouseEnter: true,   
       }}
-        effect={"fade"}                                         // Set effect to fade
-        fadeEffect={{ crossFade: true }}                         // Prevents slide overlapping
-        speed={1000}                                            // 1 second transition (premium feel)
+        effect={"fade"}                                         
+        fadeEffect={{ crossFade: true }}                         
+        speed={1000}                                            
         className="mySwiper h-[300px]"
       >
         {slidesData.map((slide) => (

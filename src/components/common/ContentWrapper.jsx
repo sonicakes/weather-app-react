@@ -14,7 +14,8 @@ const ContentWrapper = () => {
   const [selectedLocLoading, setSelectedLocLoading] = useState(false);
   const [selectedLocInfo, setSelectedLocInfo] = useState(null);
   const [unitSetting, setUnitSetting] = useState("metric");
-
+  const [providedHours, setProvidedHours] = useState(8);
+  
   useEffect(() => {
     if (location === "") {
       setLocationsLoading(false);
@@ -68,7 +69,7 @@ const ContentWrapper = () => {
     setSelectedLocLoading(true);
     const delayDebounceFn = setTimeout(() => {
       const fetchLocationDetails = async () => {
-        let url=`${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=8&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`;
+        let url=`${METEO_URL}?latitude=${selectedLocation.latitude}&longitude=${selectedLocation.longitude}&hourly=temperature_2m,weather_code&forecast_hours=${providedHours}&daily=weather_code,temperature_2m_max,temperature_2m_min&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,precipitation,rain,cloud_cover,wind_speed_10m,showers&timezone=${selectedLocation.timezone}`;
         if (unitSetting === "imperial") {
           url += "&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch";
         }
@@ -91,7 +92,7 @@ const ContentWrapper = () => {
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [selectedLocation, unitSetting]);
+  }, [selectedLocation, unitSetting, providedHours]);
 
   const handleSearchUpdate = (e) => {
     setLocation(e.target.value);
@@ -130,6 +131,7 @@ const ContentWrapper = () => {
         selectedLocInfo={selectedLocInfo}
         error={error}
         selectedLocLoading={selectedLocLoading}
+        providedHours={providedHours}
       />
     </>
   );

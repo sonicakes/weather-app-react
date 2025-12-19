@@ -19,8 +19,8 @@ const MainDisplay = ({
     selectedLocInfo,
     error,
     selectedLocLoading,
-    setLocation
-
+    setLocation,
+    providedHours
 }) => {
   return (
     <main>
@@ -88,7 +88,8 @@ const MainDisplay = ({
           {selectedLocInfo && !selectedLocLoading && (
             <HourlyDisplay
               hourly={selectedLocInfo.hourly}
-              curTime={selectedLocInfo.current.time}
+              providedHours={providedHours}
+              dailyVals={selectedLocInfo.daily}
             />
           )}
         </div>
