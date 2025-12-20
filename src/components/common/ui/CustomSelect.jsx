@@ -3,7 +3,7 @@ import { hoursVals } from "../../../constants/hoursVals";
 import iconDropdown from "../../../assets/images/icon-dropdown.svg";
 import { useState } from "react";
 
-const CustomSelect = ({ hoursNum, days }) => {
+const CustomSelect = ({ hoursNum, days, handleHrsClick }) => {
   const currentWeekday = days.time[hoursVals.indexOf(hoursNum)];
   const [selectOpen, setSelectOpen] = useState(false);
   return (
@@ -22,7 +22,10 @@ const CustomSelect = ({ hoursNum, days }) => {
               <div 
               key={index}
               data-hrs={index === 0 ? 8 : index * 24 + 8}
-              className="hover:bg-neutral-700 py-1 px-3 cursor-pointer">
+              className="hover:bg-neutral-700 py-1 px-3 cursor-pointer"
+              onClick={(e) => {handleHrsClick(e.target)}}
+              
+              >
                 {formatTime(day, "weekOnly")}
               </div>
               // todo: wire on click func that will get hrs required value to pass to state

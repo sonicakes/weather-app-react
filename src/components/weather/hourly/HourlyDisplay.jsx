@@ -1,7 +1,7 @@
 import CustomSelect from "../../common/ui/CustomSelect";
 import HourlyPill from "./HourlyPill";
 
-const HourlyDisplay = ({ hourly, providedHours, dailyVals }) => {
+const HourlyDisplay = ({ hourly, providedHours, dailyVals, handleHrsClick }) => {
   const slicedDates = hourly.time.slice(providedHours - 8, providedHours);
   const slicedTemps = hourly.temperature_2m.slice(providedHours - 8, providedHours);
   const slicedWeather = hourly.weather_code.slice(providedHours - 8, providedHours);
@@ -12,6 +12,7 @@ const HourlyDisplay = ({ hourly, providedHours, dailyVals }) => {
         <CustomSelect 
           hoursNum={providedHours}
           days={dailyVals}
+          handleHrsClick={handleHrsClick}
         />
       </div>
       <div className="flex flex-col gap-2">

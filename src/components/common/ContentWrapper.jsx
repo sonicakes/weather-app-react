@@ -113,6 +113,10 @@ const ContentWrapper = () => {
       setUnitSetting("metric");
     }
   };
+
+  const handleHrsProvided = (hr) => {
+    setProvidedHours(Number(hr.getAttribute('data-hrs')));
+  }
   return (
     <>
       <TopNav 
@@ -132,6 +136,7 @@ const ContentWrapper = () => {
         error={error}
         selectedLocLoading={selectedLocLoading}
         providedHours={providedHours}
+        handleHrsClick={handleHrsProvided}
       />
     </>
   );

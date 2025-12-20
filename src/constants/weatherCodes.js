@@ -6,8 +6,8 @@ export const WMO_WEATHER_MAP = {
   3: { description: 'Overcast', icon: '☁️', style: 'overcast' },
 
   // Fog
-  45: { description: 'Fog', icon: '🌫️', style: 'fog' },
-  48: { description: 'Rime fog', icon: '🌫️', style: 'fog' },
+  45: { description: 'Fog', icon: '🌁', style: 'fog' },
+  48: { description: 'Rime fog', icon: '🌁', style: 'fog' },
 
   // Drizzle
   51: { description: 'Light Drizzle', icon: '🌧️', style: 'drizzle' },
