@@ -13,6 +13,7 @@
   --color-neutral-300: hsl(240, 6%, 70%);
   --color-neutral-200: hsl(250, 6%, 84%);
   --color-neutral-0: hsl(0, 0%, 100%);
+  --color-neutral-hover: hsl(243, 23%, 38%);
 
   /* orange */
   --color-orange-500: hsl(28, 100%, 52%);
