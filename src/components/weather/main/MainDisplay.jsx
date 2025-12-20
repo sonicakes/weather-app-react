@@ -80,14 +80,14 @@ const MainDisplay = ({
           </div>
         </div>
         <div className="md:col-span-1">
-          {selectedLocInfo && !selectedLocLoading && (
             <HourlyDisplay
-              hourly={selectedLocInfo.hourly}
+              hourly={selectedLocInfo?.hourly}
               providedHours={providedHours}
-              dailyVals={selectedLocInfo.daily}
+              dailyVals={selectedLocInfo?.daily}
               handleHrsClick={handleHrsClick}
+              selectedLocLoading={selectedLocLoading}
+              selectedLocInfo={selectedLocInfo}
             />
-          )}
         </div>
       </div>
     </main>
