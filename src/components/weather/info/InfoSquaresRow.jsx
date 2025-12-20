@@ -9,7 +9,6 @@ const InfoSquaresRow = ({
     <>
       <div className="my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-        {/* feels like - apparent temp */}
           {selectedLocInfo && !selectedLocLoading && (
             <InfoSquare
               title="Feels Like"
@@ -24,12 +23,9 @@ const InfoSquaresRow = ({
             />
           )}
 
-          {selectedLocLoading && (
-            <InfoSquare title="Feels Like" value="-" />
-          )}
+          {selectedLocLoading && <InfoSquare title="Feels Like" value="-" />}
 
-        {/* humidity */}
-        {selectedLocInfo && !selectedLocLoading && (
+          {selectedLocInfo && !selectedLocLoading && (
             <InfoSquare
               title="Humidity"
               value={
@@ -43,48 +39,33 @@ const InfoSquaresRow = ({
             />
           )}
 
-          {selectedLocLoading && (
-            <InfoSquare title="Humidity" value="-" />
-          )}
-{/* wind */}
-                  {selectedLocInfo && !selectedLocLoading && (
+          {selectedLocLoading && <InfoSquare title="Humidity" value="-" />}
+          {selectedLocInfo && !selectedLocLoading && (
             <InfoSquare
               title="Wind"
               value={
                 <div>
                   <span>{selectedLocInfo.current.wind_speed_10m} </span>
-                  <span>
-                    {selectedLocInfo.current_units.wind_speed_10m}
-                  </span>
+                  <span>{selectedLocInfo.current_units.wind_speed_10m}</span>
                 </div>
               }
             />
           )}
 
-          {selectedLocLoading && (
-            <InfoSquare title="Wind" value="-" />
-          )}
-{/* precipitation */}
-                  {selectedLocInfo && !selectedLocLoading && (
+          {selectedLocLoading && <InfoSquare title="Wind" value="-" />}
+          {selectedLocInfo && !selectedLocLoading && (
             <InfoSquare
               title="Precipitation"
               value={
                 <div>
                   <span>{selectedLocInfo.current.precipitation} </span>
-                  <span>
-                    {selectedLocInfo.current_units.precipitation}
-                  </span>
+                  <span>{selectedLocInfo.current_units.precipitation}</span>
                 </div>
               }
             />
           )}
 
-          {selectedLocLoading && (
-            <InfoSquare title="Precipitation" value="-" />
-          )}
-      
-
-        
+          {selectedLocLoading && <InfoSquare title="Precipitation" value="-" />}
         </div>
       </div>
     </>

@@ -75,10 +75,12 @@ const MainDisplay = ({
               selectedLocLoading={selectedLocLoading}
               selectedLocation={selectedLocation}
             />
-            {selectedLocInfo && !selectedLocLoading && (
+            {selectedLocInfo && (
               <DailyDisplay
                 dailyVals={selectedLocInfo.daily}
                 dailyUnits={selectedLocInfo.dailyUnits}
+                selectedLocLoading={selectedLocLoading}
+                selectedLocInfo={selectedLocInfo}
               />
             )}
           </div>
