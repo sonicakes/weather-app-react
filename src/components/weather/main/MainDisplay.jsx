@@ -9,19 +9,19 @@ import DailyDisplay from "../daily/DailyDisplay";
 import HomeGallery from "../../gallery/HomeGallery";
 
 const MainDisplay = ({
-    location, 
-    handleSearchUpdate, 
-    searchResults, 
-    locationsLoading, 
-    handleLocationSelection, 
-    showEmptyMsg,
-    selectedLocation,
-    selectedLocInfo,
-    error,
-    selectedLocLoading,
-    setLocation,
-    providedHours,
-    handleHrsClick
+  location,
+  handleSearchUpdate,
+  searchResults,
+  locationsLoading,
+  handleLocationSelection,
+  showEmptyMsg,
+  selectedLocation,
+  selectedLocInfo,
+  error,
+  selectedLocLoading,
+  setLocation,
+  providedHours,
+  handleHrsClick,
 }) => {
   return (
     <main>
@@ -59,34 +59,26 @@ const MainDisplay = ({
       {!selectedLocation && !locationsLoading && (
         <HomeGallery setLocation={setLocation} />
       )}
-      {/* main display window */}
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* left col */}
         <div className="md:col-span-2">
           <MainDisplayWindow
             selectedLocInfo={selectedLocInfo}
             selectedLocLoading={selectedLocLoading}
             selectedLocation={selectedLocation}
           />
-
           <div className="rounded-lg">
             <InfoSquaresRow
               selectedLocInfo={selectedLocInfo}
               selectedLocLoading={selectedLocLoading}
-              selectedLocation={selectedLocation}
             />
-            {selectedLocInfo && (
-              <DailyDisplay
-                dailyVals={selectedLocInfo.daily}
-                dailyUnits={selectedLocInfo.dailyUnits}
-                selectedLocLoading={selectedLocLoading}
-                selectedLocInfo={selectedLocInfo}
-              />
-            )}
+            <DailyDisplay
+              dailyVals={selectedLocInfo?.daily}
+              dailyUnits={selectedLocInfo?.dailyUnits}
+              selectedLocLoading={selectedLocLoading}
+              selectedLocInfo={selectedLocInfo}
+            />
           </div>
         </div>
-
-        {/* right col */}
         <div className="md:col-span-1">
           {selectedLocInfo && !selectedLocLoading && (
             <HourlyDisplay

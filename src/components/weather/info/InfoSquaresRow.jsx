@@ -3,7 +3,6 @@ import InfoSquare from "./InfoSquare";
 const InfoSquaresRow = ({
   selectedLocInfo,
   selectedLocLoading,
-  selectedLocation,
 }) => {
   return (
     <>
