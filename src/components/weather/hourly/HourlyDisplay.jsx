@@ -23,7 +23,7 @@ const HourlyDisplay = ({
   return (
     <>
       {(selectedLocInfo || selectedLocLoading) && (
-        <div className="bg-neutral-800 py-3 px-4 rounded-lg border border-neutral-600">
+        <div className="bg-neutral-800 py-3 px-4 rounded-lg border border-neutral-600 h-full">
           {selectedLocInfo && !selectedLocLoading && (
             <>
               <div className="flex items-center justify-between pb-4 ">

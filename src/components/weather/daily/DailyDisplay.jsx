@@ -8,13 +8,13 @@ const DailyDisplay = ({
 }) => {
   const dayz = Array.from({ length: 7 }, (_, i) => i + 1);
   return (
-    <div className="py-3 rounded-lg">
+    <div className="pt-2 rounded-lg">
       {(selectedLocInfo || selectedLocLoading) && (
         <>
           <h5 className="text-neutral-200 pb-3  font-semibold">
             Daily forecast
           </h5>
-          <div className="grid grid-cols-7 gap-3">
+          <div className="grid grid-cols-3 md:grid-cols-7 gap-3">
             {selectedLocInfo && !selectedLocLoading && (
               <>
                 {dailyVals.time.map((day, index) => (

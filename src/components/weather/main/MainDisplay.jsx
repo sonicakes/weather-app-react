@@ -27,7 +27,7 @@ const MainDisplay = ({
     <main>
       <div className="flex md:justify-center flex-col items-center gap-3">
         <MainHeading title="How's the sky looking today?" />
-        <p className="md:w-100 text-center leading-6 text-neutral-200 py-4">
+        <p className="md:w-100 text-center text-base md:text-lg leading-6 text-neutral-200 py-4">
           Search for a specific destination or select one of the major cities
           from the gallery below.
         </p>
