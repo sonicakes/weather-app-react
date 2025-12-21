@@ -49,11 +49,11 @@ Users should be able to:
 
 ### Screenshot
 
-![Desktop](.public/desktop.png)
+![Desktop](./public/desktop.png)
 
-![Mobile](.public/mobile.png)
+![Mobile](./public/mobile.png)
 
-![Home Gallery](.public/gallery.png)
+![Home Gallery](./public/gallery.png)
 
 ### Links
 
