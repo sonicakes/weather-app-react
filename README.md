@@ -137,4 +137,5 @@ I've started going from the top down, tackling the search input -  locations dis
 5. Add flag to the main display screen.
 6. PWA
 7. add API error UI
+8. based initial weather on browser's location if enabled
 
